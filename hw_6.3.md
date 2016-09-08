@@ -1,3 +1,4 @@
+```javascript
 db.getCollection('companies').aggregate([
     { $match: {"founded_year":2004, "funding_rounds": { $exists: true, $ne: [] } } },
     { $project: {
@@ -10,3 +11,4 @@ db.getCollection('companies').aggregate([
     { $match: {"rounds": {$gte: 5} }},
     { $sort: {"avg_fund_amount": 1} }
 ])
+```
