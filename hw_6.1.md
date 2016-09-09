@@ -8,11 +8,12 @@ db.companies.aggregate([
         unique_relation: { $addToSet: "$permalink" }        
       } 
     },
+    { $match:{"_id.permalink": {$in: ["eric-di-benedetto", "roger-ehrenberg", "josh-stein", "tim-hanlon"]}  } },
     { $project: {
         "name": "$_id.permalink",
         "count": { $size: "$unique_relation"}
      } },
-    { $sort: {count: -1} }
+    { $sort: {"_id.permalink": 1} }
 ]);
 
 ```
